@@ -1,0 +1,36 @@
+{
+  "books": [
+    {
+      "name": "1984",
+      "author": "George Orwell",
+      "genre": "Dystopian fiction",
+      "year": 1949,
+      "issued": "Issued",
+      "employer": "Орозбай Алтынбеков"
+    },
+    {
+      "name": "To Kill a Mockingbird",
+      "author": "Harper Lee",
+      "genre": "Coming-of-age story",
+      "year": 1960,
+      "issued": "Not Issued",
+      "employer": "None"
+    },
+    {
+      "name": "The Catcher in the Rye",
+      "author": "J.D. Salinger",
+      "genre": "Coming-of-age story",
+      "year": 1951,
+      "issued": "Not Issued",
+      "employer": "None"
+    },
+    {
+      "name": "Pride and Prejudice",
+      "author": "Jane Austen",
+      "genre": "Romantic novel",
+      "year": 1813,
+      "issued": "Issued",
+      "employer": "Азидин Аманкулов"
+    }
+  ]
+}

@@ -74,4 +74,9 @@ public class Book {
     public void setImg(String img) {
         this.img = img;
     }
+
+    @Override
+    public String toString() {
+        return String.format("%s %s %s %s %s %s", name, author, genre, year, issued, employer);
+    }
 }
