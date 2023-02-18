@@ -19,7 +19,8 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -60,16 +61,10 @@
             <th scope="col">Author</th>
             <th scope="col">Genre</th>
             <th scope="col">Year</th>
+            <th scope="col">Status</th>
+            <th scope="col">To whom</th>
         </tr>
         </thead>
-        <tfoot>
-        <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Author</th>
-            <th scope="col">Genre</th>
-            <th scope="col">Year</th>
-        </tr>
-        </tfoot>
         <tbody>
         <#list books as book>
             <tr>
@@ -77,6 +72,8 @@
                 <td>${book.author}</td>
                 <td>${book.genre}</td>
                 <td>${book.year}</td>
+                <td>${book.issued}</td>
+                <td>${book.employer}</td>
                 <td><a type="button" class="btn btn-info" href="/books/bookInfo">Info</a></td>
             </tr>
         </#list>

@@ -6,13 +6,33 @@ public class Book {
     private String genre;
     private Integer year;
     private String img;
+    private String issued;
+    private String employer;
 
-    public Book(String name, String author, String genre, Integer year, String img) {
+    public Book(String name, String author, String genre, Integer year, String img, String issued, String employer) {
         this.name = name;
         this.author = author;
         this.genre = genre;
         this.year = year;
         this.img = img;
+        this.issued = issued;
+        this.employer = employer;
+    }
+
+    public String getEmployer() {
+        return employer;
+    }
+
+    public void setEmployer(String employer) {
+        this.employer = employer;
+    }
+
+    public String getIssued() {
+        return issued;
+    }
+
+    public void setIssued(String issued) {
+        this.issued = issued;
     }
 
     public String getName() {
