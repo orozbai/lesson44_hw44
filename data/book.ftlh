@@ -57,10 +57,12 @@
     <div class="card" style="width: 18rem;">
         <img src="${book.img}" class="card-img-top" alt="${book.name}">
         <div class="card-body">
-            <h5 class="card-title">${book.name}</h5>
-            <p class="card-text">${book.author}</p>
-            <p class="card-text">${book.genre}</p>
-            <p class="card-text">${book.year}</p>
+            <h5 class="card-title">Name: ${book.name}</h5>
+            <p class="card-text">Author: ${book.author}</p>
+            <p class="card-text">Genre: ${book.genre}</p>
+            <p class="card-text">Year: ${book.year}</p>
+            <p class="card-text">Status: ${book.issued}</p>
+            <p class="card-text">By whom: ${book.employer}</p>
         </div>
     </div>
 </div>

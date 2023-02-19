@@ -30,7 +30,6 @@
             <tr>
                 <td>${e.name}</td>
                 <td>${e.surname}</td>
-                <td><a type="button" class="btn btn-info" href="/books/bookInfo">Info</a></td>
             </tr>
         </#list>
         </tbody>
