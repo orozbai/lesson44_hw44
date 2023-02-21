@@ -18,14 +18,22 @@
 </head>
 <body>
 <div class="container">
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <p class="card-text">Name: ${employer.name}</p>
-            <p class="card-text">Surname: ${employer.surname}</p>
-            <p class="card-text">Reading books: ${employer.readingBooks}</p>
-            <p class="card-text">Current books: ${employer.currentBooks}</p>
-        </div>
-    </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Surname</th>
+        </tr>
+        </thead>
+        <tbody>
+        <#list employers as e>
+            <tr>
+                <td>${e.name}</td>
+                <td>${e.surname}</td>
+            </tr>
+        </#list>
+        </tbody>
+    </table>
 </div>
 </body>
 </html>

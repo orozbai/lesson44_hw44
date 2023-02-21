@@ -2,19 +2,27 @@
   "employers": [
     {
       "name": "Орозбай",
-      "surname": "Алтынбеков"
+      "surname": "Алтынбеков",
+      "readingBooks": "Журавлик",
+      "currentBooks": "1984"
     },
     {
       "name": "Азидин",
-      "surname": "Аманкулов"
+      "surname": "Аманкулов",
+      "readingBooks": "none",
+      "currentBooks": "none"
     },
     {
       "name": "Максим",
-      "surname": "Фарафонов"
+      "surname": "Фарафонов",
+      "readingBooks": "none",
+      "currentBooks": "none"
     },
     {
       "name": "Азамат",
-      "surname": "Абдулаев"
+      "surname": "Абдулаев",
+      "readingBooks": "none",
+      "currentBooks": "Pride and Prejudice"
     }
   ]
 }

@@ -18,16 +18,25 @@ public class Lesson44Server extends BasicServer {
         super(host, port);
         registerGet("/sample", this::freemarkerSampleHandler);
         registerGet("/books", this::bookHandler);
-        registerGet("/books/bookInfo", this::bookInfoHandler);
+        registerGet("/books/book-info", this::bookInfoHandler);
         registerGet("/employers", this::employerHandler);
+        registerGet("/employers/employer-info", this::employerInfoHandler);
+    }
+
+    private void employerInfoHandler(HttpExchange exchange) {
+        renderTemplate(exchange,"employer.ftlh", getEmployerDataModel());
     }
 
     private void employerHandler(HttpExchange exchange) {
-        renderTemplate(exchange, "employer.ftlh", getEmployerDataModel());
+        renderTemplate(exchange, "employers.ftlh", getEmployersDataModel());
+    }
+
+    private Object getEmployersDataModel() {
+        return new EmployersDataModel();
     }
 
     private Object getEmployerDataModel() {
-        return new EmployersDataModel();
+        return new EmployerDataModel();
     }
 
     private void bookInfoHandler(HttpExchange httpExchange) {

@@ -74,7 +74,7 @@
                 <td>${book.year}</td>
                 <td>${book.issued}</td>
                 <td>${book.employer}</td>
-                <td><a type="button" class="btn btn-info" href="/books/bookInfo">Info</a></td>
+                <td><a type="button" class="btn btn-info" href="/books/book-info">Info</a></td>
             </tr>
         </#list>
         </tbody>
