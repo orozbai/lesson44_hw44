@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Register</title>
+    <style>
+        form {
+            width: 400px;
+            margin: 0 auto;
+            font-size: 18px;
+            font-family: Arial, sans-serif;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: none;
+            font-size: 18px;
+            font-family: Arial, sans-serif;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-family: Arial, sans-serif;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #3e8e41;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+<form action="" method="post">
+    <label for="username">User name:</label>
+    <input type="text" id="username" name="username" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+    <div id="emailError" class="error"></div>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+
+    <label for="repeatPassword">Repeat password:</label>
+    <input type="password" id="repeatPassword" name="repeatPassword" required>
+    <div id="passwordError" class="error"></div>
+
+    <input type="submit" value="Register">
+</form>
+
+<script>
+    const emailInput = document.getElementById("email");
+    const passwordInput = document.getElementById("password");
+    const repeatPasswordInput = document.getElementById("repeatPassword");
+
+    const emailError = document.getElementById("emailError");
+    const passwordError = document.getElementById("passwordError");
+
+    function validateEmail() {
+        const email = emailInput.value;
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            emailError.innerHTML = "Enter correct email";
+            emailInput.classList.add("error");
+            return false;
+        } else {
+            emailError.innerHTML = "";
+            emailInput.classList.remove("error");
+            return true;
+        }
+    }
+
+    function validatePassword() {
+        const password = passwordInput.value;
+        const repeatPassword = repeatPasswordInput.value;
+        if (password !== repeatPassword) {
+            passwordError.innerHTML = "Password mismatch";
+            passwordInput.classList.add("error");
+            repeatPasswordInput.classList.add("error");
+            return false;
+        } else {
+            passwordError.innerHTML = "";
+            passwordInput.classList.remove("error");
+            repeatPasswordInput.classList.remove("error");
+            return true;
+        }
+    }
+    emailInput.addEventListener("input", validateEmail);
+    passwordInput.addEventListener("input", validatePassword);
+    repeatPasswordInput.addEventListener("input", validatePassword);
+</script>
+</body>
+</html>
