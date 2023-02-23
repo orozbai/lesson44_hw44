@@ -4,25 +4,29 @@
       "name": "Орозбай",
       "surname": "Алтынбеков",
       "readingBooks": "Журавлик",
-      "currentBooks": "1984"
+      "currentBooks": "1984",
+      "email": "123@gmail.com"
     },
     {
       "name": "Азидин",
       "surname": "Аманкулов",
       "readingBooks": "none",
-      "currentBooks": "none"
+      "currentBooks": "none",
+      "email": "1@gmail.com"
     },
     {
       "name": "Максим",
       "surname": "Фарафонов",
       "readingBooks": "none",
-      "currentBooks": "none"
+      "currentBooks": "none",
+      "email": "12@gmail.com"
     },
     {
       "name": "Азамат",
       "surname": "Абдулаев",
       "readingBooks": "none",
-      "currentBooks": "Pride and Prejudice"
+      "currentBooks": "Pride and Prejudice",
+      "email": "1234@gmail.com"
     }
   ]
 }

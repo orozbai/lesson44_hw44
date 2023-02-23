@@ -1,17 +1,17 @@
 [
   {
-    "email": "q@q.com",
-    "user": "q",
-    "password": "q"
+    "email": "altynbekov.bai@gmail.com",
+    "user": "Никита",
+    "password": "123"
   },
   {
-    "email": "example2@example.com",
-    "user": "example2",
-    "password": "examplepassword2"
+    "email": "someEmail@gmail.com",
+    "user": "Денис",
+    "password": "1234"
   },
   {
-    "email": "example3@example.com",
-    "user": "example3",
-    "password": "examplepassword3"
+    "email": "bai@gmail.com",
+    "user": "artem",
+    "password": "1236"
   }
 ]

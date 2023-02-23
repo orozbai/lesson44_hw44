@@ -5,12 +5,21 @@ public class Employer {
     private String surname;
     private String readingBooks;
     private String currentBooks;
+    private String email;
 
     public Employer(String name, String surname, String readingBooks, String currentBooks) {
         this.name = name;
         this.surname = surname;
         this.readingBooks = readingBooks;
         this.currentBooks = currentBooks;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getReadingBooks() {
