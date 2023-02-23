@@ -72,6 +72,15 @@ public abstract class BasicServer {
         }
     }
 
+    protected void redirect(HttpExchange exchange) {
+        try {
+            exchange.getResponseHeaders().add("Location", "/register");
+            exchange.getResponseBody().close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     private static HttpServer createServer(String host, int port) throws IOException {
         var msg = "Starting server on http://%s:%s/%n";
         System.out.printf(msg, host, port);

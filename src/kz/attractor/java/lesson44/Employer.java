@@ -6,12 +6,34 @@ public class Employer {
     private String readingBooks;
     private String currentBooks;
     private String email;
+    private String user;
+    private String password;
 
-    public Employer(String name, String surname, String readingBooks, String currentBooks) {
+    public Employer(String name, String surname, String readingBooks, String currentBooks, String email, String user,
+                    String password) {
         this.name = name;
         this.surname = surname;
         this.readingBooks = readingBooks;
         this.currentBooks = currentBooks;
+        this.email = email;
+        this.user = user;
+        this.password = password;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getEmail() {
@@ -56,6 +78,6 @@ public class Employer {
 
     @Override
     public String toString() {
-        return String.format("%s %s %s %s", name, surname, readingBooks, currentBooks);
+        return String.format("%s %s %s %s %s %s %s", name, surname, readingBooks, currentBooks, email, user, password);
     }
 }

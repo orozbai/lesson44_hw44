@@ -1,32 +1,47 @@
-{
-  "employers": [
-    {
-      "name": "Орозбай",
-      "surname": "Алтынбеков",
-      "readingBooks": "Журавлик",
-      "currentBooks": "1984",
-      "email": "123@gmail.com"
-    },
-    {
-      "name": "Азидин",
-      "surname": "Аманкулов",
-      "readingBooks": "none",
-      "currentBooks": "none",
-      "email": "1@gmail.com"
-    },
-    {
-      "name": "Максим",
-      "surname": "Фарафонов",
-      "readingBooks": "none",
-      "currentBooks": "none",
-      "email": "12@gmail.com"
-    },
-    {
-      "name": "Азамат",
-      "surname": "Абдулаев",
-      "readingBooks": "none",
-      "currentBooks": "Pride and Prejudice",
-      "email": "1234@gmail.com"
-    }
-  ]
-}
+[
+  {
+    "name": "Орозбай",
+    "surname": "Алтынбеков",
+    "readingBooks": "Журавлик",
+    "currentBooks": "1984",
+    "email": "altynbekov.bai@gmail.com",
+    "user": "olol",
+    "password": "123"
+  },
+  {
+    "name": "Азидин",
+    "surname": "Аманкулов",
+    "readingBooks": "none",
+    "currentBooks": "none",
+    "email": "1@gmail.com",
+    "user": "car",
+    "password": "123"
+  },
+  {
+    "name": "Максим",
+    "surname": "Фарафонов",
+    "readingBooks": "none",
+    "currentBooks": "none",
+    "email": "12@gmail.com",
+    "user": "plain",
+    "password": "123"
+  },
+  {
+    "name": "Азамат",
+    "surname": "Абдулаев",
+    "readingBooks": "none",
+    "currentBooks": "Pride and Prejudice",
+    "email": "1234@gmail.com",
+    "user": "kill",
+    "password": "123"
+  },
+  {
+    "name": "none",
+    "surname": "none",
+    "readingBooks": "none",
+    "currentBooks": "none",
+    "email": "123@2.2",
+    "user": "orozbay",
+    "password": "123"
+  }
+]
