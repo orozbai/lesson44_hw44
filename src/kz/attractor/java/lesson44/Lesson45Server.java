@@ -64,7 +64,9 @@ public class Lesson45Server extends Lesson44Server {
             list.add(new Employer("some name", "none", "none", "none",
                     "none", "some user", "some password"));
             FileService.writeFileProfile(list);
-            redirect303(exchange, "/incorrect-login");
+            //Таймер для того чтобы в profile.json успело всё загрузиться
+            ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
+            executor.schedule(() -> redirect303(exchange, "/incorrect-login"), 2, TimeUnit.SECONDS);
         }
     }
 
