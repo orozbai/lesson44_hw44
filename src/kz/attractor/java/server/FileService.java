@@ -64,4 +64,29 @@ public class FileService {
         }
         return employers;
     }
+
+    public static void  writeFileProfile(List<Employer> profile){
+        String json = GSON.toJson(profile);
+        try{
+            Path path = Paths.get("data/profile.json");
+            Files.write(path, json.getBytes());
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    public static List<Employer> readFileProfile() {
+        String json = "";
+        List<Employer> profile = new ArrayList<>();
+        try{
+            Path path = Paths.get("data/profile.json");
+            json = Files.readString(path);
+            profile.addAll(Arrays.asList(GSON.fromJson(json, Employer[].class)));
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+        return profile;
+    }
 }

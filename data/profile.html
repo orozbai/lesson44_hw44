@@ -60,9 +60,8 @@
                     <div class="panel-body">
                         <div class="text-center" id="author">
                             <img src="https://bootstraptema.ru/snippets/element/2016/profilesection/myprofile.jpg">
-                            <h3>Василий Понторезов</h3>
+                            <h3>${profile.name}</h3>
                             <small class="label label-warning">Российская Федерация</small>
-                            <p>Я простой Русский пацан и мне всё по барабану.</p>
                             <p class="sosmed-author">
                                 <a href="#"><i class="fa fa-facebook" title="Facebook"></i></a>
                                 <a href="#"><i class="fa fa-twitter" title="Twitter"></i></a>
@@ -86,13 +85,13 @@
                                 <h4>История профиля</h4>
                                 <table class="table table-th-block">
                                     <tbody>
-                                    <tr><td class="active">Зарегистрирован:</td><td>12-06-2016</td></tr>
-                                    <tr><td class="active">Последняя активность:</td><td>12-06-2016 / 09:11</td></tr>
-                                    <tr><td class="active">Страна:</td><td>Россия</td></tr>
-                                    <tr><td class="active">Город:</td><td>Волгоград</td></tr>
-                                    <tr><td class="active">Пол:</td><td>Мужской</td></tr>
-                                    <tr><td class="active">Полных лет:</td><td>43</td></tr>
-                                    <tr><td class="active">Семейное положение:</td><td>Женат</td></tr>
+                                    <tr><td class="active">email:</td><td>${profile.email}</td></tr>
+                                    <tr><td class="active">User name:</td><td>${profile.user}</td></tr>
+                                    <tr><td class="active">Password:</td><td>${profile.password}</td></tr>
+                                    <tr><td class="active">Name:</td><td>${profile.name}</td></tr>
+                                    <tr><td class="active">Surname:</td><td>${profile.surname}</td></tr>
+                                    <tr><td class="active">Current Books:</td><td>${profile.currentBooks}</td></tr>
+                                    <tr><td class="active">Reading Books:</td><td>${profile.readingBooks}</td></tr>
                                     <tr><td class="active">Рейтинг пользователя:</td><td><i class="fa fa-star" style="color:red"></i> <i class="fa fa-star" style="color:red"></i> <i class="fa fa-star" style="color:red"></i> <i class="fa fa-star" style="color:red"></i> 4/5</td></tr>
                                     <tr><td class="active">Плагин рейтинга:</td><td><a href="https://bootstraptema.ru/stuff/plugins_bootstrap/improvement/bootstrap_star_rating/12-1-0-73" target="_blank">http://goo.gl/bGGXuw</a></td></tr>
                                     </tbody>

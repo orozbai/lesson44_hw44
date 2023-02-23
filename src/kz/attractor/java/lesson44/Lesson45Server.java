@@ -21,10 +21,17 @@ public class Lesson45Server extends Lesson44Server {
         registerGet("/register", this::registerGet);
         registerPost("/register", this::registerPost);
         registerGet("/error", this::failedHandler);
+        registerGet("/profile", this::profileGet);
+        registerGet("/incorrect-login", this::incorrectLogin);
     }
 
     private void failedHandler(HttpExchange exchange) {
         Path path = makeFilePath("error.html");
+        sendFile(exchange, path, ContentType.TEXT_HTML);
+    }
+
+    private void incorrectLogin(HttpExchange exchange) {
+        Path path = makeFilePath("incorrect-login.html");
         sendFile(exchange, path, ContentType.TEXT_HTML);
     }
 
@@ -33,17 +40,40 @@ public class Lesson45Server extends Lesson44Server {
         Map<String, String> parsed = Utils.parseUrlEncoded(raw, "&");
         String email = parsed.get("email");
         String password = parsed.get("password");
-        for (int i = 0; i < FileService.readFileEmployers().size(); i++) {
-            if (email.equals(FileService.readFileEmployers().get(i).getEmail())
-                    && password.equals(FileService.readFileEmployers().get(i).getPassword())) {
-                registerGet("/profile", this::profileGet);
+        var emp = FileService.readFileEmployers();
+        String correctEmail = "";
+        String correctPassword = "";
+        for (Employer employer : emp) {
+            if (employer.getEmail().equals(email) && employer.getPassword().equals(password)) {
+                correctEmail = employer.getEmail();
+                correctPassword = employer.getPassword();
             }
+        }
+        if (correctEmail.equalsIgnoreCase(email) && correctPassword.equals(password)) {
+            for (int i = 0; i < FileService.readFileEmployers().size(); i++) {
+                if (email.equals(FileService.readFileEmployers().get(i).getEmail())
+                        && password.equals(FileService.readFileEmployers().get(i).getPassword())) {
+                    List<Employer> list = new ArrayList<>();
+                    list.add(FileService.readFileEmployers().get(i));
+                    FileService.writeFileProfile(list);
+                    redirect303(exchange, "/profile");
+                }
+            }
+        } else {
+            List<Employer> list = new ArrayList<>();
+            list.add(new Employer("some name", "none", "none", "none",
+                    "none", "some user", "some password"));
+            FileService.writeFileProfile(list);
+            redirect303(exchange, "/incorrect-login");
         }
     }
 
     private void profileGet(HttpExchange exchange) {
-        Path path = makeFilePath("profile.html");
-        sendFile(exchange, path, ContentType.TEXT_HTML);
+        renderTemplate(exchange, "profile.html", getProfileDataModel());
+    }
+
+    private Object getProfileDataModel() {
+        return new ProfileDataModel();
     }
 
     private void loginGet(HttpExchange exchange) {
