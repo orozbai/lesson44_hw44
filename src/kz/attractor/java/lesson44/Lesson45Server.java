@@ -63,6 +63,7 @@ public class Lesson45Server extends Lesson44Server {
                         List<Employer> list = new ArrayList<>();
                         list.add(FileService.readFileEmployers().get(i));
                         FileService.writeFileProfile(list);
+                        Lesson46Server.creatingUnique(list, exchange);
                         redirect303(exchange, "/login/profile");
                     }
                 }
