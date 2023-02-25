@@ -1,7 +1,7 @@
 package kz.attractor.java.lesson44;
 
 public class BookDataModel {
-    private Book book;
+    private final Book book;
     static EmployersDataModel emp = new EmployersDataModel();
     static BooksDataModel books = new BooksDataModel();
 

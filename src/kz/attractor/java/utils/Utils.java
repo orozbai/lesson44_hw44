@@ -1,4 +1,4 @@
-package kz.attractor.java.Utils;
+package kz.attractor.java.utils;
 
 import java.net.URLDecoder;
 import java.nio.charset.Charset;

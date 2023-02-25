@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EmployersDataModel {
-    private List<Employer> employers = new ArrayList<>();
+    private final List<Employer> employers = new ArrayList<>();
 
     public EmployersDataModel() {
         employers.addAll(FileService.readFileEmployers());

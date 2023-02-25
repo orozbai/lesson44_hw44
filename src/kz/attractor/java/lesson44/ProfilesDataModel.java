@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProfilesDataModel {
-    private List<Employer> profile = new ArrayList<>();
+    private final List<Employer> profile = new ArrayList<>();
 
     public ProfilesDataModel() {
-        profile.addAll(FileService.readFileProfile());
+        profile.addAll(0, FileService.readFileProfile());
     }
 
     public List<Employer> getProfile() {

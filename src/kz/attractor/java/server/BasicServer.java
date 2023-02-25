@@ -72,15 +72,6 @@ public abstract class BasicServer {
         }
     }
 
-    protected void redirect(HttpExchange exchange) {
-        try {
-            exchange.getResponseHeaders().add("Location", "/register");
-            exchange.getResponseBody().close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     private static HttpServer createServer(String host, int port) throws IOException {
         var msg = "Starting server on http://%s:%s/%n";
         System.out.printf(msg, host, port);
@@ -164,6 +155,16 @@ public abstract class BasicServer {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    protected static String getCookies(HttpExchange exchange) {
+        return exchange.getRequestHeaders()
+                .getOrDefault("Cookie", List.of(""))
+                .get(0);
+    }
+
+    protected void setCookie(HttpExchange exchange, Cookie cookie) {
+        exchange.getResponseHeaders().add("Set-Cookie", cookie.toString());
     }
 
     private void handleIncomingServerRequests(HttpExchange exchange) {

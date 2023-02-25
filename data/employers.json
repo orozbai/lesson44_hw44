@@ -43,5 +43,41 @@
     "email": "123@2.2",
     "user": "orozbay",
     "password": "123"
+  },
+  {
+    "name": "none",
+    "surname": "none",
+    "readingBooks": "none",
+    "currentBooks": "none",
+    "email": "qwe@qwe.qwe",
+    "user": "artem",
+    "password": "123"
+  },
+  {
+    "name": "none",
+    "surname": "none",
+    "readingBooks": "none",
+    "currentBooks": "none",
+    "email": "ivan@ivan.ivan",
+    "user": "ivan",
+    "password": "123"
+  },
+  {
+    "name": "none",
+    "surname": "none",
+    "readingBooks": "none",
+    "currentBooks": "none",
+    "email": "11111111111@1.1",
+    "user": "111111111",
+    "password": "123"
+  },
+  {
+    "name": "none",
+    "surname": "none",
+    "readingBooks": "none",
+    "currentBooks": "none",
+    "email": "111@mail.4",
+    "user": "11",
+    "password": "123"
   }
 ]

@@ -1,7 +1,7 @@
 package kz.attractor.java.lesson44;
 
 public class EmployerDataModel {
-    private Employer employer;
+    private final Employer employer;
     static EmployersDataModel employers = new EmployersDataModel();
 
     public EmployerDataModel() {

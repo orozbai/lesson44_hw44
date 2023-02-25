@@ -1,11 +1,11 @@
 [
   {
-    "name": "имя",
-    "surname": "фамилия",
-    "readingBooks": "нету",
-    "currentBooks": "нету",
-    "email": "fsfsa@g.com",
-    "user": "user",
-    "password": "psw"
+    "name": "unknown",
+    "surname": "unknown",
+    "readingBooks": "unknown",
+    "currentBooks": "unknown",
+    "email": "unknown",
+    "user": "unknown",
+    "password": "unknown"
   }
 ]

@@ -1,10 +1,9 @@
 package kz.attractor.java.lesson44;
 
 import com.sun.net.httpserver.HttpExchange;
-import kz.attractor.java.Utils.Utils;
+import kz.attractor.java.utils.Utils;
 import kz.attractor.java.server.ContentType;
 import kz.attractor.java.server.FileService;
-import kz.attractor.java.server.ResponseCodes;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -20,14 +19,21 @@ public class Lesson45Server extends Lesson44Server {
         registerPost("/login", this::loginPost);
         registerGet("/register", this::registerGet);
         registerPost("/register", this::registerPost);
-        registerGet("/error", this::failedHandler);
-        registerGet("/profile", this::profileGet);
+        registerGet("/profile", this::unknownGet);
+        registerGet("/login/profile", this::profileGet);
         registerGet("/incorrect-login", this::incorrectLogin);
     }
 
-    private void failedHandler(HttpExchange exchange) {
-        Path path = makeFilePath("error.html");
-        sendFile(exchange, path, ContentType.TEXT_HTML);
+    private void unknownGet(HttpExchange exchange) {
+        List<Employer> list = new ArrayList<>();
+        list.add(new Employer("unknown", "unknown", "unknown", "unknown",
+                "unknown", "unknown", "unknown"));
+        FileService.writeFileProfile(list);
+        renderTemplate(exchange, "profile.html", getUnknownProfileDataModel());
+    }
+
+    private Object getUnknownProfileDataModel() {
+        return new UnknownDataModel();
     }
 
     private void incorrectLogin(HttpExchange exchange) {
@@ -49,24 +55,27 @@ public class Lesson45Server extends Lesson44Server {
                 correctPassword = employer.getPassword();
             }
         }
-        if (correctEmail.equalsIgnoreCase(email) && correctPassword.equals(password)) {
-            for (int i = 0; i < FileService.readFileEmployers().size(); i++) {
-                if (email.equals(FileService.readFileEmployers().get(i).getEmail())
-                        && password.equals(FileService.readFileEmployers().get(i).getPassword())) {
-                    List<Employer> list = new ArrayList<>();
-                    list.add(FileService.readFileEmployers().get(i));
-                    FileService.writeFileProfile(list);
-                    redirect303(exchange, "/profile");
+        try {
+            if (correctEmail.equalsIgnoreCase(email) && correctPassword.equals(password)) {
+                for (int i = 0; i < FileService.readFileEmployers().size(); i++) {
+                    if (email.equals(FileService.readFileEmployers().get(i).getEmail())
+                            && password.equals(FileService.readFileEmployers().get(i).getPassword())) {
+                        List<Employer> list = new ArrayList<>();
+                        list.add(FileService.readFileEmployers().get(i));
+                        FileService.writeFileProfile(list);
+                        redirect303(exchange, "/login/profile");
+                    }
                 }
+            } else {
+                throw new IOException();
             }
-        } else {
+        } catch (IOException e) {
             List<Employer> list = new ArrayList<>();
-            list.add(new Employer("some name", "none", "none", "none",
-                    "none", "some user", "some password"));
+            list.add(new Employer("unknown", "unknown", "unknown", "unknown",
+                    "unknown", "unknown", "unknown"));
             FileService.writeFileProfile(list);
-            //Таймер для того чтобы в profile.json успело всё загрузиться
-            ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
-            executor.schedule(() -> redirect303(exchange, "/incorrect-login"), 2, TimeUnit.SECONDS);
+            Path path = makeFilePath("incorrect-login.html");
+            sendFile(exchange, path, ContentType.TEXT_HTML);
         }
     }
 
@@ -102,21 +111,18 @@ public class Lesson45Server extends Lesson44Server {
                 empEmail = employer.getEmail();
             }
         }
-        if (!empEmail.equalsIgnoreCase(email)) {
-            list.add(new Employer("none", "none", "none", "none", email, user, password));
-            FileService.writeFile(list);
-            String msg = "Registration successful";
-            try {
-                sendByteData(exchange,
-                        ResponseCodes.OK,
-                        ContentType.TEXT_HTML,
-                        msg.getBytes());
-            } catch (IOException e) {
-                e.printStackTrace();
+        try {
+            if (!empEmail.equalsIgnoreCase(email)) {
+                list.add(new Employer("none", "none", "none", "none", email, user, password));
+                FileService.writeFile(list);
+                ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
+                executor.schedule(() -> redirect303(exchange, "/login"), 1, TimeUnit.SECONDS);
+            } else {
+                throw new IOException();
             }
-        } else {
-            ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
-            executor.schedule(() -> redirect303(exchange, "/error"), 2, TimeUnit.SECONDS);
+        } catch (IOException e) {
+            Path path = makeFilePath("error.html");
+            sendFile(exchange, path, ContentType.TEXT_HTML);
         }
     }
 }
