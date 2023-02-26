@@ -1,11 +1,11 @@
 [
   {
-    "name": "unknown",
-    "surname": "unknown",
-    "readingBooks": "unknown",
-    "currentBooks": "unknown",
-    "email": "unknown",
-    "user": "unknown",
-    "password": "unknown"
+    "name": "Азидин",
+    "surname": "Аманкулов",
+    "readingBooks": "none",
+    "currentBooks": "none",
+    "email": "1@gmail.com",
+    "user": "car",
+    "password": "123"
   }
 ]

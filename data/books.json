@@ -5,8 +5,8 @@
       "author": "George Orwell",
       "genre": "Dystopian fiction",
       "year": 1949,
-      "issued": "Issued",
-      "employer": "Орозбай Алтынбеков"
+      "issued": "Not Issued",
+      "employer": "None"
     },
     {
       "name": "To Kill a Mockingbird",
@@ -29,8 +29,8 @@
       "author": "Jane Austen",
       "genre": "Romantic novel",
       "year": 1813,
-      "issued": "Issued",
-      "employer": "Азидин Аманкулов"
+      "issued": "Not Issued",
+      "employer": "None"
     }
   ]
 }

@@ -5,7 +5,8 @@ body {
 }
 
 body {
-    background: url("../bg/bg.png") 0 0 repeat;
+    background: url("https://i.pinimg.com/originals/ce/ca/ba/cecabaac30736b17f7f278422ef861c0.gif") no-repeat;
+    background-size: 100%;
 }
 
 form {

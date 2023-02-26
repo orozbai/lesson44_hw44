@@ -5,11 +5,10 @@ import kz.attractor.java.server.FileService;
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class BooksDataModel {
+public class GiveBookDataModel {
     private final List<Book> books = new ArrayList<>();
 
-    public BooksDataModel() {
+    public GiveBookDataModel() {
         books.addAll(FileService.readFile());
     }
 
