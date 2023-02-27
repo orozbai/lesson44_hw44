@@ -16,7 +16,32 @@ public class Lesson46Server extends Lesson45Server {
         super(host, port);
         registerGet("/give-books", this::giveBooksGet);
         registerPost("/give-books", this::giveBooksPost);
+        registerGet("/return-books", this::returnBooksGet);
+        registerPost("/return-books", this::returnBooksPost);
         registerGet("/logout", this::logoutGet);
+    }
+
+    private void returnBooksPost(HttpExchange exchange) {
+        String raw = getBody(exchange);
+        Map<String, String> parsed = Utils.parseUrlEncoded(raw, "&");
+        int bookId = Integer.parseInt(parsed.get("bookId"));
+        System.out.println(bookId);
+        FileService.writeBookInformation(getLoginEmp().get(0).getEmail());
+        redirect303(exchange,"/return-books");
+    }
+
+    private void returnBooksGet(HttpExchange exchange) {
+        renderTemplate(exchange, "return-books.ftlh", getReturnBooks(exchange));
+    }
+
+    private Object getReturnBooks(HttpExchange exchange) {
+        try {
+            String email = loginEmp.get(0).getEmail();
+            return new ReturnBookDataModel(email);
+        } catch (NullPointerException e) {
+            redirect303(exchange, "/login");
+        }
+        return "unknown";
     }
 
     private void logoutGet(HttpExchange exchange) {
@@ -24,6 +49,7 @@ public class Lesson46Server extends Lesson45Server {
         Path path = makeFilePath("logout.html");
         sendFile(exchange, path, ContentType.TEXT_HTML);
     }
+
     private int bookCount;
 
     private int booksCount;
@@ -58,8 +84,6 @@ public class Lesson46Server extends Lesson45Server {
                 bookCount = 1;
             }
             redirect303(exchange, "/give-books");
-        } else {
-            System.out.println("сообщение о том что надо залогиниться");
         }
     }
 

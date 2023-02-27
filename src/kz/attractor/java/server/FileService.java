@@ -31,6 +31,35 @@ public class FileService {
         return GSON.fromJson(json, CollectionBook.class).getBooksList();
     }
 
+    public static void writeBookInformation(String email) {
+        try {
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+            JsonElement root = gson.fromJson(new FileReader("data/book-information.json"), JsonElement.class);
+            if (root.isJsonArray()) {
+                JsonArray array = root.getAsJsonArray();
+                for (int i = 0; i < array.size(); i++) {
+                    JsonObject obj = array.get(i).getAsJsonObject();
+                    if (obj.get("email").getAsString().equals(email)) {
+                        array.remove(i);
+                        i--;
+                    }
+                }
+            } else if (root.isJsonObject()) {
+                JsonObject object = root.getAsJsonObject();
+                if (object.get("email").getAsString().equals(email)) {
+                    object = null;
+                }
+            }
+
+            try (FileWriter writer = new FileWriter("data/book-information.json")) {
+                gson.toJson(root, writer);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void writeStatusCookie(int num) {
         try {
             Gson gson = new Gson();
