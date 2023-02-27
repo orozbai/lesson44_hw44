@@ -4,10 +4,9 @@ import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 import kz.attractor.java.lesson44.*;
 
-import javax.imageio.IIOException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -30,6 +29,23 @@ public class FileService {
             e.printStackTrace();
         }
         return GSON.fromJson(json, CollectionBook.class).getBooksList();
+    }
+
+    public static void writeStatusCookie(int num) {
+        try {
+            Gson gson = new Gson();
+            JsonObject jsonObject = gson.fromJson(new FileReader("data/books.json"), JsonObject.class);
+            JsonArray peopleArray = jsonObject.getAsJsonArray("books");
+            for (int i = 0; i < peopleArray.size(); i++) {
+                JsonObject personObject = peopleArray.get(i).getAsJsonObject();
+                personObject.addProperty("status", num);
+            }
+            try (FileWriter writer = new FileWriter("data/books.json")) {
+                gson.toJson(jsonObject, writer);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void writeFile(List<Employer> users) {

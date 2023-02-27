@@ -7,7 +7,8 @@
       "year": 1949,
       "issued": "Not Issued",
       "employer": "None",
-      "id": 1
+      "id": 1,
+      "status": 1
     },
     {
       "name": "To Kill a Mockingbird",
@@ -16,7 +17,8 @@
       "year": 1960,
       "issued": "Not Issued",
       "employer": "None",
-      "id": 2
+      "id": 2,
+      "status": 1
     },
     {
       "name": "The Catcher in the Rye",
@@ -25,7 +27,8 @@
       "year": 1951,
       "issued": "Not Issued",
       "employer": "None",
-      "id": 3
+      "id": 3,
+      "status": 1
     },
     {
       "name": "Pride and Prejudice",
@@ -34,7 +37,8 @@
       "year": 1813,
       "issued": "Not Issued",
       "employer": "None",
-      "id": 4
+      "id": 4,
+      "status": 1
     }
   ]
 }

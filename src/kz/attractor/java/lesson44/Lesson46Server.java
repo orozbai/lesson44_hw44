@@ -1,11 +1,13 @@
 package kz.attractor.java.lesson44;
 
 import com.sun.net.httpserver.HttpExchange;
+import kz.attractor.java.server.ContentType;
 import kz.attractor.java.server.Cookie;
 import kz.attractor.java.server.FileService;
 import kz.attractor.java.utils.Utils;
 
 import java.io.IOException;
+import java.nio.file.Path;
 import java.util.*;
 import java.util.List;
 
@@ -14,7 +16,15 @@ public class Lesson46Server extends Lesson45Server {
         super(host, port);
         registerGet("/give-books", this::giveBooksGet);
         registerPost("/give-books", this::giveBooksPost);
+        registerGet("/logout", this::logoutGet);
     }
+
+    private void logoutGet(HttpExchange exchange) {
+        FileService.writeStatusCookie(1);
+        Path path = makeFilePath("logout.html");
+        sendFile(exchange, path, ContentType.TEXT_HTML);
+    }
+    private int bookCount;
 
     private int booksCount;
 
@@ -35,13 +45,19 @@ public class Lesson46Server extends Lesson45Server {
                         && FileService.readFileBookInformation().get(i).getSecondBook() == 0) {
                     activeBooksCount = true;
                     FileService.replaceFileInformationBook(bookId, user.get(0).getEmail());
+                    FileService.writeStatusCookie(1);
                 }
             }
-            informationBooks.add(new InformationBook(user.get(0).getEmail(), bookId, 0, booksCount));
             if (activeBooksCount) {
                 booksCount = 0;
             }
-            FileService.writeFileInformationBook(informationBooks);
+            if (bookCount == 0) {
+                informationBooks.add(new InformationBook(user.get(0).getEmail(), bookId, 0, booksCount));
+                FileService.writeFileInformationBook(informationBooks);
+                informationBooks.clear();
+                bookCount = 1;
+            }
+            redirect303(exchange, "/give-books");
         } else {
             System.out.println("сообщение о том что надо залогиниться");
         }
@@ -67,20 +83,13 @@ public class Lesson46Server extends Lesson45Server {
     }
 
     public static void checkCookie(List<Employer> list, HttpExchange exchange) {
-        Map<String, Object> userMap = new HashMap<>();
+        FileService.writeStatusCookie(2);
+
         setLoginEmp(list);
-        // позже поменять на то чтобы при запросе стринг гетКукис эксчейндж если куки нету то ставить фолсе в иф
+
         if (!creatingCookie) {
             createCookie(list, exchange);
         }
-
-        String cookieStr = getCookies(exchange);
-        Map<String, String> cookieParse = Cookie.parse(cookieStr);
-        userMap.put(cookieParse.get("mail"), list);
-
-        System.out.println("куки стр " + cookieStr);
-        System.out.println("куки парс" + cookieParse);
-        System.out.println("user map " + userMap);
     }
 
     private static void createCookie(List<Employer> list, HttpExchange exchange) {

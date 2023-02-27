@@ -11,7 +11,7 @@ public class BookDataModel {
                 "https://img.freepik.com/free-vector/neon-lights-background-theme_52683-44625.jpg",
                 books.getBooks().get(3).getIssued(),
                 emp.getEmployers().get(1).getName() + " " + emp.getEmployers().get(1).getSurname(),
-                books.getBooks().get(3).getId());
+                books.getBooks().get(3).getId(), books.getBooks().get(3).getStatus());
     }
 
     public Book getBook() {
