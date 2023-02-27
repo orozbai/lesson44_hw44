@@ -1,11 +1,11 @@
 [
   {
-    "name": "Азидин",
-    "surname": "Аманкулов",
-    "readingBooks": "none",
-    "currentBooks": "none",
-    "email": "1@gmail.com",
-    "user": "car",
+    "name": "Орозбай",
+    "surname": "Алтынбеков",
+    "readingBooks": "Журавлик",
+    "currentBooks": "1984",
+    "email": "altynbekov.bai@gmail.com",
+    "user": "olol",
     "password": "123"
   }
 ]

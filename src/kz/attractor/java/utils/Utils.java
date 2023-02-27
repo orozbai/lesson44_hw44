@@ -31,4 +31,14 @@ public class Utils {
 
         return Optional.of(Map.entry(key, value));
     }
+
+    public static String parseUrlEncodedBook(String raw) {
+        return String.valueOf(decodeBook(raw));
+    }
+
+    public static Optional<String> decodeBook(String decode) {
+        if (!decode.contains("=")) return Optional.empty();
+        Charset utf8 = StandardCharsets.UTF_8;
+        return Optional.of(URLDecoder.decode(decode, utf8));
+    }
 }

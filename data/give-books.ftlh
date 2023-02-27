@@ -70,8 +70,9 @@
                 <td>${book.author}</td>
                 <td>${book.genre}</td>
                 <td>${book.year}</td>
-                <form method="post" action="/give-books">
+                <form method="post" action="">
                     <input type="hidden" name="bookId" value="${book.id}" />
+                    <input type="hidden" name="booksCount" value="1" />
                     <td><button type="submit" class="btn btn-info">Take book</button></td>
                 </form>
             </tr>

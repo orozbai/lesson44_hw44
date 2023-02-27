@@ -8,8 +8,9 @@ public class Book {
     private String img;
     private String issued;
     private String employer;
+    private int id;
 
-    public Book(String name, String author, String genre, Integer year, String img, String issued, String employer) {
+    public Book(String name, String author, String genre, Integer year, String img, String issued, String employer, int id) {
         this.name = name;
         this.author = author;
         this.genre = genre;
@@ -17,6 +18,7 @@ public class Book {
         this.img = img;
         this.issued = issued;
         this.employer = employer;
+        this.id = id;
     }
 
     public String getEmployer() {
@@ -75,8 +77,16 @@ public class Book {
         this.img = img;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
-        return String.format("%s %s %s %s %s %s", name, author, genre, year, issued, employer);
+        return String.format("%s %s %s %s %s %s %s", name, author, genre, year, issued, employer, id);
     }
 }

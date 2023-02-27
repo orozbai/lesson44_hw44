@@ -5,6 +5,7 @@ import com.google.gson.reflect.TypeToken;
 import kz.attractor.java.lesson44.*;
 
 import javax.imageio.IIOException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.lang.reflect.Type;
@@ -19,6 +20,7 @@ public class FileService {
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
     private static final Path PATH = Paths.get("data/books.json");
     private static final Path pathEMPLOYERS = Paths.get("data/employers.json");
+    private static final Path pathInformationBook = Paths.get("data/book-information.json");
 
     public static List<Book> readFile() {
         String json = "";
@@ -44,34 +46,33 @@ public class FileService {
     private static List<Employer> readExistingUsers() {
         try {
             String json = new String(Files.readAllBytes(pathEMPLOYERS));
-            Type type = new TypeToken<List<Employer>>(){}.getType();
+            Type type = new TypeToken<List<Employer>>() {
+            }.getType();
             return GSON.fromJson(json, type);
         } catch (IOException e) {
-            return new ArrayList<>(); // если файл не существует, возвращаем пустой список
+            return new ArrayList<>();
         }
     }
 
     public static List<Employer> readFileEmployers() {
         String json = "";
         List<Employer> employers = new ArrayList<>();
-        try{
+        try {
             Path path = Paths.get("data/employers.json");
             json = Files.readString(path);
             employers.addAll(Arrays.asList(GSON.fromJson(json, Employer[].class)));
-        }
-        catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return employers;
     }
 
-    public static void  writeFileProfile(List<Employer> profile){
+    public static void writeFileProfile(List<Employer> profile) {
         String json = GSON.toJson(profile);
-        try{
+        try {
             Path path = Paths.get("data/profile.json");
             Files.write(path, json.getBytes());
-        }
-        catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -79,14 +80,65 @@ public class FileService {
     public static List<Employer> readFileProfile() {
         String json = "";
         List<Employer> profile = new ArrayList<>();
-        try{
+        try {
             Path path = Paths.get("data/profile.json");
             json = Files.readString(path);
             profile.addAll(Arrays.asList(GSON.fromJson(json, Employer[].class)));
-        }
-        catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return profile;
+    }
+
+    public static List<InformationBook> readFileBookInformation() {
+        String json = "";
+        List<InformationBook> information = new ArrayList<>();
+        try {
+            json = Files.readString(pathInformationBook);
+            information.addAll(Arrays.asList(GSON.fromJson(json, InformationBook[].class)));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return information;
+    }
+
+    public static void writeFileInformationBook(List<InformationBook> users) {
+        List<InformationBook> existingUsers = readExistingInformationBook();
+        existingUsers.addAll(users);
+        String json = GSON.toJson(existingUsers);
+        try {
+            Files.write(pathInformationBook, json.getBytes());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private static List<InformationBook> readExistingInformationBook() {
+        try {
+            String json = new String(Files.readAllBytes(pathInformationBook));
+            Type type = new TypeToken<List<InformationBook>>() {
+            }.getType();
+            return GSON.fromJson(json, type);
+        } catch (IOException e) {
+            return new ArrayList<>();
+        }
+    }
+
+    public static void replaceFileInformationBook(int secondBookId, String email) {
+        try {
+            Gson gson = new Gson();
+            String json = new String(Files.readAllBytes(pathInformationBook));
+            JsonArray jsonArray = gson.fromJson(json, JsonArray.class);
+            for (JsonElement element : jsonArray) {
+                if (element.getAsJsonObject().get("email").getAsString().equals(email)) {
+                    element.getAsJsonObject().addProperty("secondBook", secondBookId);
+                }
+            }
+            try (FileWriter writer = new FileWriter("data/book-information.json")) {
+                gson.toJson(jsonArray, writer);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
