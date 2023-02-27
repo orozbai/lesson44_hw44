@@ -27,7 +27,7 @@ public class Lesson46Server extends Lesson45Server {
         int bookId = Integer.parseInt(parsed.get("bookId"));
         System.out.println(bookId);
         FileService.writeBookInformation(getLoginEmp().get(0).getEmail());
-        redirect303(exchange,"/return-books");
+        redirect303(exchange, "/return-books");
     }
 
     private void returnBooksGet(HttpExchange exchange) {
@@ -46,8 +46,10 @@ public class Lesson46Server extends Lesson45Server {
 
     private void logoutGet(HttpExchange exchange) {
         FileService.writeStatusCookie(1);
-        Path path = makeFilePath("logout.html");
-        sendFile(exchange, path, ContentType.TEXT_HTML);
+        Cookie cookie = new Cookie<>("mail", loginEmp.get(0).getEmail());
+        cookie.setMaxAge(0);
+        exchange.getResponseHeaders().add("Set-Cookie", cookie.toString());
+        redirect303(exchange, "/login");
     }
 
     private int bookCount;

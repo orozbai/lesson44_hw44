@@ -1,12 +1,14 @@
-<link rel="stylesheet" href="https://bootstraptema.ru/plugins/2015/bootstrap3/bootstrap.min.css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+<link rel="stylesheet" href="https://bootstraptema.ru/plugins/2015/bootstrap3/bootstrap.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
 <script src="https://bootstraptema.ru/plugins/jquery/jquery-1.11.3.min.js"></script>
 <script src="https://bootstraptema.ru/plugins/2015/b-v3-3-6/bootstrap.min.js"></script>
 
 <br><br><br>
 
 <style>
-    body{background:url(https://bootstraptema.ru/images/bg/bg-1.png)}
+    body {
+        background: url(https://bootstraptema.ru/images/bg/bg-1.png)
+    }
 
     #main {
         background-color: #f2f2f2;
@@ -18,6 +20,7 @@
         border-radius: 4px;
         border-bottom: 4px solid #ddd;
     }
+
     #real-estates-detail #author img {
         -webkit-border-radius: 100%;
         -moz-border-radius: 100%;
@@ -27,6 +30,7 @@
         border: 5px solid #ecf0f1;
         margin-bottom: 10px;
     }
+
     #real-estates-detail .sosmed-author i.fa {
         width: 30px;
         height: 30px;
@@ -35,9 +39,11 @@
         padding-top: 6px;
         margin-top: 10px;
     }
+
     .panel-default .panel-heading {
         background-color: #fff;
     }
+
     #real-estates-detail .slides li img {
         height: 450px;
     }
@@ -78,6 +84,14 @@
                         <ul id="myTab" class="nav nav-pills">
                             <li class="active"><a href="#detail" data-toggle="tab">О пользователе</a></li>
                             <li class=""><a href="#contact" data-toggle="tab">Отправить сообщение</a></li>
+                            <li class=""><a href="http://localhost:9889/logout">
+                                <button onclick="deleteCookie('cookieName')">Logout</button>
+                            </a></li>
+                            <script>
+                                function deleteCookie(name) {
+                                    document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+                                }
+                            </script>
                         </ul>
                         <div id="myTabContent" class="tab-content">
                             <hr>
@@ -85,15 +99,48 @@
                                 <h4>История профиля</h4>
                                 <table class="table table-th-block">
                                     <tbody>
-                                    <tr><td class="active">email:</td><td>${profile.email}</td></tr>
-                                    <tr><td class="active">User name:</td><td>${profile.user}</td></tr>
-                                    <tr><td class="active">Password:</td><td>${profile.password}</td></tr>
-                                    <tr><td class="active">Name:</td><td>${profile.name}</td></tr>
-                                    <tr><td class="active">Surname:</td><td>${profile.surname}</td></tr>
-                                    <tr><td class="active">Current Books:</td><td>${profile.currentBooks}</td></tr>
-                                    <tr><td class="active">Reading Books:</td><td>${profile.readingBooks}</td></tr>
-                                    <tr><td class="active">Рейтинг пользователя:</td><td><i class="fa fa-star" style="color:red"></i> <i class="fa fa-star" style="color:red"></i> <i class="fa fa-star" style="color:red"></i> <i class="fa fa-star" style="color:red"></i> 4/5</td></tr>
-                                    <tr><td class="active">Плагин рейтинга:</td><td><a href="https://bootstraptema.ru/stuff/plugins_bootstrap/improvement/bootstrap_star_rating/12-1-0-73" target="_blank">http://goo.gl/bGGXuw</a></td></tr>
+                                    <tr>
+                                        <td class="active">email:</td>
+                                        <td>${profile.email}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="active">User name:</td>
+                                        <td>${profile.user}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="active">Password:</td>
+                                        <td>${profile.password}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="active">Name:</td>
+                                        <td>${profile.name}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="active">Surname:</td>
+                                        <td>${profile.surname}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="active">Current Books:</td>
+                                        <td>${profile.currentBooks}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="active">Reading Books:</td>
+                                        <td>${profile.readingBooks}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="active">Рейтинг пользователя:</td>
+                                        <td><i class="fa fa-star" style="color:red"></i> <i class="fa fa-star"
+                                                                                            style="color:red"></i> <i
+                                                class="fa fa-star" style="color:red"></i> <i class="fa fa-star"
+                                                                                             style="color:red"></i> 4/5
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="active">Плагин рейтинга:</td>
+                                        <td>
+                                            <a href="https://bootstraptema.ru/stuff/plugins_bootstrap/improvement/bootstrap_star_rating/12-1-0-73"
+                                               target="_blank">http://goo.gl/bGGXuw</a></td>
+                                    </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -125,7 +172,9 @@
                                         <p class="help-block">Текст сообщения будет отправлен пользователю</p>
                                     </div>
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-success" data-original-title="" title="">Отправить</button>
+                                        <button type="submit" class="btn btn-success" data-original-title="" title="">
+                                            Отправить
+                                        </button>
                                     </div>
                                 </form>
                             </div>

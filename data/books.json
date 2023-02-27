@@ -1,1 +1,44 @@
-{"books":[{"name":"1984","author":"George Orwell","genre":"Dystopian fiction","year":1949,"issued":"Not Issued","employer":"None","id":1,"status":2},{"name":"To Kill a Mockingbird","author":"Harper Lee","genre":"Coming-of-age story","year":1960,"issued":"Not Issued","employer":"None","id":2,"status":2},{"name":"The Catcher in the Rye","author":"J.D. Salinger","genre":"Coming-of-age story","year":1951,"issued":"Not Issued","employer":"None","id":3,"status":2},{"name":"Pride and Prejudice","author":"Jane Austen","genre":"Romantic novel","year":1813,"issued":"Not Issued","employer":"None","id":4,"status":2}]}
+{
+  "books": [
+    {
+      "name": "1984",
+      "author": "George Orwell",
+      "genre": "Dystopian fiction",
+      "year": 1949,
+      "issued": "Not Issued",
+      "employer": "None",
+      "id": 1,
+      "status": 1
+    },
+    {
+      "name": "To Kill a Mockingbird",
+      "author": "Harper Lee",
+      "genre": "Coming-of-age story",
+      "year": 1960,
+      "issued": "Not Issued",
+      "employer": "None",
+      "id": 2,
+      "status": 1
+    },
+    {
+      "name": "The Catcher in the Rye",
+      "author": "J.D. Salinger",
+      "genre": "Coming-of-age story",
+      "year": 1951,
+      "issued": "Not Issued",
+      "employer": "None",
+      "id": 3,
+      "status": 1
+    },
+    {
+      "name": "Pride and Prejudice",
+      "author": "Jane Austen",
+      "genre": "Romantic novel",
+      "year": 1813,
+      "issued": "Not Issued",
+      "employer": "None",
+      "id": 4,
+      "status": 1
+    }
+  ]
+}
