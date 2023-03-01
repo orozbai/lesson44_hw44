@@ -18,7 +18,7 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="/login/profile">Профиль</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -27,10 +27,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/give-books">Получить книгу<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link" href="/return-books">Вернуть книгу</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
@@ -54,31 +54,26 @@
     </div>
 </nav>
 <div class="container">
-    <table class="table">
-        <thead>
-        <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Author</th>
-            <th scope="col">Genre</th>
-            <th scope="col">Year</th>
-            <th scope="col">Status</th>
-            <th scope="col">To whom</th>
-        </tr>
-        </thead>
-        <tbody>
-        <#list books as book>
-            <tr>
-                <td>${book.name}</td>
-                <td>${book.author}</td>
-                <td>${book.genre}</td>
-                <td>${book.year}</td>
-                <td>${book.issued}</td>
-                <td>${book.employer}</td>
-                <td><a type="button" class="btn btn-info" href="/books/book-info">Info</a></td>
-            </tr>
-        </#list>
-        </tbody>
-    </table>
+    <#list books as book>
+        <div class="card mb-3" style="max-width: 540px;">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img src="${book.img}" alt="icon.img" style="max-width: 100%; height: 100%">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">${book.name}</h5>
+                        <p>Описание: ${book.description}</p>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">author: ${book.author}</li>
+                            <li class="list-group-item">genre: ${book.genre}</li>
+                            <li class="list-group-item">year: ${book.year}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </#list>
 </div>
 </body>
 </html>

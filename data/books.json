@@ -8,7 +8,9 @@
       "issued": "Not Issued",
       "employer": "None",
       "id": 1,
-      "status": 1
+      "status": 1,
+      "img": "https://i.pinimg.com/564x/b1/f5/03/b1f5039a72de66da5d59388afe21499b.jpg",
+      "description": "какое-то описание книги про 1984"
     },
     {
       "name": "To Kill a Mockingbird",
@@ -18,7 +20,9 @@
       "issued": "Not Issued",
       "employer": "None",
       "id": 2,
-      "status": 1
+      "status": 1,
+      "img": "https://i.pinimg.com/564x/e2/4c/35/e24c35441dd64760222cc7e0cb32de07.jpg",
+      "description": "какое-то описание книги про To Kill a Mockingbird"
     },
     {
       "name": "The Catcher in the Rye",
@@ -28,7 +32,9 @@
       "issued": "Not Issued",
       "employer": "None",
       "id": 3,
-      "status": 1
+      "status": 1,
+      "img": "https://i.pinimg.com/564x/5d/d2/0c/5dd20c433c9a3b7507f50a0a40dd885d.jpg",
+      "description": "какое-то описание книги про The Catcher in the Rye"
     },
     {
       "name": "Pride and Prejudice",
@@ -38,7 +44,9 @@
       "issued": "Not Issued",
       "employer": "None",
       "id": 4,
-      "status": 1
+      "status": 1,
+      "img": "https://i.pinimg.com/564x/95/61/6d/95616dd31daef0aa34bdd03b352bc445.jpg",
+      "description": "какое-то описание книги про Pride and Prejudice"
     }
   ]
 }

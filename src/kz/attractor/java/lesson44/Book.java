@@ -10,9 +10,10 @@ public class Book {
     private String employer;
     private int id;
     private int status;
+    private String description;
 
     public Book(String name, String author, String genre, Integer year, String img, String issued, String employer,
-                int id, int status) {
+                int id, int status, String description) {
         this.name = name;
         this.author = author;
         this.genre = genre;
@@ -22,6 +23,15 @@ public class Book {
         this.employer = employer;
         this.id = id;
         this.status = status;
+        this.description = description;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public int getStatus() {
