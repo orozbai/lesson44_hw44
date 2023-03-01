@@ -1,13 +1,11 @@
 package kz.attractor.java.lesson44;
 
 import com.sun.net.httpserver.HttpExchange;
-import kz.attractor.java.server.ContentType;
 import kz.attractor.java.server.Cookie;
 import kz.attractor.java.server.FileService;
 import kz.attractor.java.utils.Utils;
 
 import java.io.IOException;
-import java.nio.file.Path;
 import java.util.*;
 import java.util.List;
 
