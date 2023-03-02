@@ -29,7 +29,7 @@ public class Lesson45Server extends Lesson44Server {
         list.add(new Employer("unknown", "unknown", "unknown", "unknown",
                 "unknown", "unknown", "unknown"));
         FileService.writeFileProfile(list);
-        renderTemplate(exchange, "profile.html", getUnknownProfileDataModel());
+        renderTemplate(exchange, "profile.ftlh", getUnknownProfileDataModel());
     }
 
     private Object getUnknownProfileDataModel() {
@@ -81,7 +81,7 @@ public class Lesson45Server extends Lesson44Server {
     }
 
     private void profileGet(HttpExchange exchange) {
-        renderTemplate(exchange, "profile.html", getProfileDataModel());
+        renderTemplate(exchange, "profile.ftlh", getProfileDataModel());
     }
 
     private Object getProfileDataModel() {

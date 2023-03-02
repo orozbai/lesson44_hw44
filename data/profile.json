@@ -1,11 +1,11 @@
 [
   {
-    "name": "unknown",
-    "surname": "unknown",
-    "readingBooks": "unknown",
-    "currentBooks": "unknown",
-    "email": "unknown",
-    "user": "unknown",
-    "password": "unknown"
+    "name": "Орозбай",
+    "surname": "Алтынбеков",
+    "readingBooks": "Журавлик",
+    "currentBooks": "1984",
+    "email": "altynbekov.bai@gmail.com",
+    "user": "olol",
+    "password": "123"
   }
 ]

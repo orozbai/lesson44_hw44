@@ -83,7 +83,7 @@
                     <div class="panel-body">
                         <ul id="myTab" class="nav nav-pills">
                             <li class="active"><a href="#detail" data-toggle="tab">О пользователе</a></li>
-                            <li class=""><a href="#contact" data-toggle="tab">Отправить сообщение</a></li>
+                            <li class=""><a href="#contact" data-toggle="tab">История книг</a></li>
                             <li class=""><a href="http://localhost:9889/logout">
                                 <button onclick="deleteCookie('cookieName')">Logout</button>
                             </a></li>
@@ -151,38 +151,9 @@
                                 </table>
                             </div>
                             <div class="tab-pane fade" id="contact">
-                                <p></p>
-                                <form role="form">
-                                    <div class="form-group">
-                                        <label>Ваше имя</label>
-                                        <input type="text" class="form-control rounded" placeholder="Укажите Ваше Имя">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Ваш телефон</label>
-                                        <input type="text" class="form-control rounded" placeholder="(+7)(095)123456">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>E-mail адрес</label>
-                                        <input type="email" class="form-control rounded" placeholder="Ваш Е-майл">
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox"> Согласен с условиями
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Текст Вашего сообщения</label>
-                                        <textarea class="form-control rounded" style="height: 100px;"></textarea>
-                                        <p class="help-block">Текст сообщения будет отправлен пользователю</p>
-                                    </div>
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-success" data-original-title="" title="">
-                                            Отправить
-                                        </button>
-                                    </div>
-                                </form>
+                                <#if profile.name != "unknown">
+                                    <p>Название книги: ${history.book}</p>
+                                </#if>
                             </div>
                         </div>
                     </div>

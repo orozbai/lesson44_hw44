@@ -18,6 +18,7 @@ import java.util.List;
 public class FileService {
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
     private static final Path PATH = Paths.get("data/books.json");
+    private static final Path pathHistoryBook = Paths.get("data/history-books.json");
     private static final Path pathEMPLOYERS = Paths.get("data/employers.json");
     private static final Path pathInformationBook = Paths.get("data/book-information.json");
 
@@ -92,6 +93,40 @@ public class FileService {
         try {
             String json = new String(Files.readAllBytes(pathEMPLOYERS));
             Type type = new TypeToken<List<Employer>>() {
+            }.getType();
+            return GSON.fromJson(json, type);
+        } catch (IOException e) {
+            return new ArrayList<>();
+        }
+    }
+
+    public static List<HistoryBooks> readFileHistoryBooks() {
+        String json = "";
+        List<HistoryBooks> historyBooks = new ArrayList<>();
+        try {
+            Path path = Paths.get("data/history-books.json");
+            json = Files.readString(path);
+            historyBooks.addAll(Arrays.asList(GSON.fromJson(json, HistoryBooks[].class)));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return historyBooks;
+    }
+    public static void writeFileHistoryBooks(List<HistoryBooks> users) {
+        List<HistoryBooks> existingUsers = readExistingHistoryBook();
+        existingUsers.addAll(users);
+        String json = GSON.toJson(existingUsers);
+        try {
+            Files.write(pathInformationBook, json.getBytes());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private static List<HistoryBooks> readExistingHistoryBook() {
+        try {
+            String json = new String(Files.readAllBytes(pathHistoryBook));
+            Type type = new TypeToken<List<HistoryBooks>>() {
             }.getType();
             return GSON.fromJson(json, type);
         } catch (IOException e) {

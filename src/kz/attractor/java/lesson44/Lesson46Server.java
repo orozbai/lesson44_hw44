@@ -43,6 +43,11 @@ public class Lesson46Server extends Lesson45Server {
     }
 
     private void logoutGet(HttpExchange exchange) {
+        creatingCookie = false;
+        List<Employer> list = new ArrayList<>();
+        list.add(new Employer("unknown", "unknown", "unknown", "unknown",
+                "unknown", "unknown", "unknown"));
+        FileService.writeFileProfile(list);
         FileService.writeStatusCookie(1);
         Cookie cookie = new Cookie<>("mail", loginEmp.get(0).getEmail());
         cookie.setMaxAge(0);
@@ -72,6 +77,9 @@ public class Lesson46Server extends Lesson45Server {
                     activeBooksCount = true;
                     FileService.replaceFileInformationBook(bookId, user.get(0).getEmail());
                     FileService.writeStatusCookie(1);
+                    List<HistoryBooks> infoBook = new ArrayList<>();
+                    infoBook.add(new HistoryBooks(FileService.readFile().get(bookId).getName(), user.get(0).getEmail()));
+                    FileService.writeFileHistoryBooks(infoBook);
                 }
             }
             if (activeBooksCount) {
