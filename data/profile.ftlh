@@ -152,7 +152,9 @@
                             </div>
                             <div class="tab-pane fade" id="contact">
                                 <#if profile.name != "unknown">
-                                    <p>Название книги: ${history.book}</p>
+                                    <#if profile.email == history.email>
+                                        <p>Название книги: ${history.book}</p>
+                                    </#if>
                                 </#if>
                             </div>
                         </div>
